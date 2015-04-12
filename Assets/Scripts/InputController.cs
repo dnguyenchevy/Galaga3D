@@ -32,20 +32,20 @@ public class InputController : MonoBehaviour {
 
 		//Spaceship movement WASD
 		if (Input.GetKey (KeyCode.W)) { //Forward movement
-			GetComponent<Transform> ().Translate (Vector3.forward * spacecraft.Speed * Time.deltaTime);
+			GetComponent<Transform> ().Translate (Vector3.forward * spacecraft.speed * Time.deltaTime);
 		}else if (Input.GetKey (KeyCode.A)) { //Left movement
-			GetComponent<Transform> ().Translate (Vector3.left * spacecraft.Speed * Time.deltaTime);
+			GetComponent<Transform> ().Translate (Vector3.left * spacecraft.speed * Time.deltaTime);
 		}else if (Input.GetKey (KeyCode.S)) { //Backward movement
-			GetComponent<Transform> ().Translate (Vector3.back * spacecraft.Speed * Time.deltaTime);
+			GetComponent<Transform> ().Translate (Vector3.back * spacecraft.speed * Time.deltaTime);
 		}else if (Input.GetKey (KeyCode.D)) { //Right movement
-			GetComponent<Transform> ().Translate (Vector3.right * spacecraft.Speed * Time.deltaTime);
+			GetComponent<Transform> ().Translate (Vector3.right * spacecraft.speed * Time.deltaTime);
 		}
 
 		//Spaceship movement vertical Up/Down Arrow
 		if (Input.GetKey (KeyCode.UpArrow)) { //Upward movement
-			GetComponent<Transform> ().Translate (Vector3.up * spacecraft.Speed * Time.deltaTime);
+			GetComponent<Transform> ().Translate (Vector3.up * spacecraft.speed * Time.deltaTime);
 		}else if (Input.GetKey (KeyCode.DownArrow)) { //Downward movement
-			GetComponent<Transform> ().Translate (Vector3.down * spacecraft.Speed * Time.deltaTime);
+			GetComponent<Transform> ().Translate (Vector3.down * spacecraft.speed * Time.deltaTime);
 		}
 	}
 	

@@ -2,8 +2,10 @@
 using System.Collections;
 
 public class GalagaSpaceship : MonoBehaviour {
-	public float Speed = .5f;
-	public float HealthPoint = 100f;
+	public float speed = .5f;
+	public float healthpoint = 100f;
+	public float shield = 100f;
+
 
 	// Use this for initialization
 	void Start () {
