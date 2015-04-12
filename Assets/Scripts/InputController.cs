@@ -1,0 +1,63 @@
+﻿using UnityEngine;
+using System.Collections;
+
+public class InputController : MonoBehaviour {
+	private const float ROTATION_AMOUNT = 10f;
+	private float targetAngle = 0f;
+	private GalagaSpaceship spacecraft;
+	
+	public GameObject player;
+	public GameObject turrent;
+	public Camera camera;
+
+	void Start(){
+		spacecraft = GetComponent<GalagaSpaceship> ();
+	}
+	
+	void Update(){
+		// Trigger functions if Rotate is requested
+		if (Input.GetKeyDown(KeyCode.LeftArrow)) { //Move camera & turrent clockwise
+			targetAngle -= 90.0f;
+		} else if (Input.GetKeyDown(KeyCode.RightArrow)) { //Move camera & turrent counter-clockwise
+			targetAngle += 90.0f;
+		}
+
+		if (Input.GetKeyDown (KeyCode.Space)) { //Turrent shooting function
+			spacecraft.Fire();
+		}
+
+		if (targetAngle != 0) {
+			Rotate();
+		}
+
+		//Spaceship movement WASD
+		if (Input.GetKey (KeyCode.W)) { //Forward movement
+			GetComponent<Transform> ().Translate (Vector3.forward * spacecraft.Speed * Time.deltaTime);
+		}else if (Input.GetKey (KeyCode.A)) { //Left movement
+			GetComponent<Transform> ().Translate (Vector3.left * spacecraft.Speed * Time.deltaTime);
+		}else if (Input.GetKey (KeyCode.S)) { //Backward movement
+			GetComponent<Transform> ().Translate (Vector3.back * spacecraft.Speed * Time.deltaTime);
+		}else if (Input.GetKey (KeyCode.D)) { //Right movement
+			GetComponent<Transform> ().Translate (Vector3.right * spacecraft.Speed * Time.deltaTime);
+		}
+
+		//Spaceship movement vertical Up/Down Arrow
+		if (Input.GetKey (KeyCode.UpArrow)) { //Upward movement
+			GetComponent<Transform> ().Translate (Vector3.up * spacecraft.Speed * Time.deltaTime);
+		}else if (Input.GetKey (KeyCode.DownArrow)) { //Downward movement
+			GetComponent<Transform> ().Translate (Vector3.down * spacecraft.Speed * Time.deltaTime);
+		}
+	}
+	
+	protected void Rotate(){
+		if (targetAngle > 0){ //Rotate counter-clockwise around player
+			camera.GetComponent<Transform>().RotateAround(player.GetComponent<Transform>().position, Vector3.up, -ROTATION_AMOUNT);
+			turrent.GetComponent<Transform>().RotateAround(player.GetComponent<Transform>().position, Vector3.up, -ROTATION_AMOUNT);
+			targetAngle -= ROTATION_AMOUNT;
+		}else if(targetAngle < 0){ //Rotate clockwise around player
+			camera.GetComponent<Transform>().RotateAround(player.GetComponent<Transform>().position, Vector3.up, ROTATION_AMOUNT);
+			turrent.GetComponent<Transform>().RotateAround(player.GetComponent<Transform>().position, Vector3.up, ROTATION_AMOUNT);
+			targetAngle += ROTATION_AMOUNT;
+		}
+	}
+}
