@@ -2,10 +2,11 @@
 using System.Collections;
 
 public class GalagaSpaceship : MonoBehaviour {
-	public float speed = .5f;
+	private const float MaxThrottle = 40f;
+	
+	public float speed = 10f;
 	public float healthpoint = 100f;
 	public float shield = 100f;
-
 
 	// Use this for initialization
 	void Start () {

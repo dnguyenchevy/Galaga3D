@@ -7,7 +7,7 @@ public class InputController : MonoBehaviour {
 	private GalagaSpaceship spacecraft;
 	
 	public GameObject player;
-	public GameObject turrent;
+	public GameObject turret;
 	public Camera camera;
 
 	void Start(){
@@ -16,13 +16,13 @@ public class InputController : MonoBehaviour {
 	
 	void Update(){
 		// Trigger functions if Rotate is requested
-		if (Input.GetKeyDown(KeyCode.LeftArrow)) { //Move camera & turrent clockwise
+		if (Input.GetKeyDown(KeyCode.LeftArrow)) { //Move camera & turret clockwise
 			targetAngle -= 90.0f;
-		} else if (Input.GetKeyDown(KeyCode.RightArrow)) { //Move camera & turrent counter-clockwise
+		} else if (Input.GetKeyDown(KeyCode.RightArrow)) { //Move camera & turret counter-clockwise
 			targetAngle += 90.0f;
 		}
 
-		if (Input.GetKeyDown (KeyCode.Space)) { //Turrent shooting function
+		if (Input.GetKeyDown (KeyCode.Space)) { //Turret shooting function
 			spacecraft.Fire();
 		}
 
@@ -52,11 +52,11 @@ public class InputController : MonoBehaviour {
 	protected void Rotate(){
 		if (targetAngle > 0){ //Rotate counter-clockwise around player
 			camera.GetComponent<Transform>().RotateAround(player.GetComponent<Transform>().position, Vector3.up, -ROTATION_AMOUNT);
-			turrent.GetComponent<Transform>().RotateAround(turrent.GetComponent<Transform>().position, Vector3.up, -ROTATION_AMOUNT);
+			turret.GetComponent<Transform>().RotateAround(turret.GetComponent<Transform>().position, Vector3.up, -ROTATION_AMOUNT);
 			targetAngle -= ROTATION_AMOUNT;
 		}else if(targetAngle < 0){ //Rotate clockwise around player
 			camera.GetComponent<Transform>().RotateAround(player.GetComponent<Transform>().position, Vector3.up, ROTATION_AMOUNT);
-			turrent.GetComponent<Transform>().RotateAround(turrent.GetComponent<Transform>().position, Vector3.up, ROTATION_AMOUNT);
+			turret.GetComponent<Transform>().RotateAround(turret.GetComponent<Transform>().position, Vector3.up, ROTATION_AMOUNT);
 			targetAngle += ROTATION_AMOUNT;
 		}
 	}
