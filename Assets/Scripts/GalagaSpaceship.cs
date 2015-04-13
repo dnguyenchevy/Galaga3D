@@ -4,23 +4,18 @@ using UnityEngine.UI;
 
 public class GalagaSpaceship : MonoBehaviour {
 	private const float MaxThrottle = 40f;
-	private const int HpDmgRate = 10;
-	private const int ShieldDmgRate = 1;
+	private const float flashSpeed = 5f;
+	private Color flashColour = new Color (1f, 0f, 0f, 0.1f);
 	
 	public float speed = 10f;
-
 	public int healthpoint = 100;
-	public int shield = 5;
+	public int shield = 50;
 	public Image damageImage;
 	public Slider healthSlider;
 	public Slider shieldSlider;
 
 	private int currentHP;
 	private int currentSheild;
-
-	private float flashSpeed = 5f;
-	private Color flashColour = new Color (1f, 0f, 0f, 0.1f);
-
 	private bool isDead = false;
 	private bool damaged = false;
 
@@ -48,15 +43,15 @@ public class GalagaSpaceship : MonoBehaviour {
 		Debug.Log ("Shots fire!");
 	}
 
-	public void Hit(){
+	public void Hit(int dmg){
 		Debug.Log (string.Format ("[BEFORE]Current HP: {0} Current Shield: {1}", currentHP, currentSheild));
 
 		damaged = true;
 
 		if (currentSheild > 0) {
-			currentSheild -= ShieldDmgRate;
+			currentSheild -= dmg;
 		} else {
-			currentHP -= HpDmgRate;
+			currentHP -= dmg;
 		}
 		shieldSlider.value = currentSheild;
 		healthSlider.value = currentHP;

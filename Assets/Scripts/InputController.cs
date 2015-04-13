@@ -5,12 +5,11 @@ public class InputController : MonoBehaviour {
 	private const float ROTATION_AMOUNT = 10f;
 	private float targetAngle = 0f;
 	private GalagaSpaceship spacecraft;
-	
+	private const int Dmg = 10;
+		
 	public GameObject player;
 	public GameObject turret;
 	public Camera camera;
-
-	//Test comment
 
 	void Start(){
 		spacecraft = GetComponent<GalagaSpaceship> ();
@@ -51,7 +50,7 @@ public class InputController : MonoBehaviour {
 		}
 		
 		if (Input.GetKeyDown (KeyCode.T)) { //DEBUGGING UI
-			spacecraft.Hit ();
+			spacecraft.Hit (Dmg);
 		}
 	}
 	
