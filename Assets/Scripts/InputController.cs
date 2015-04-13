@@ -10,6 +10,8 @@ public class InputController : MonoBehaviour {
 	public GameObject turret;
 	public Camera camera;
 
+	//Test comment
+
 	void Start(){
 		spacecraft = GetComponent<GalagaSpaceship> ();
 	}
