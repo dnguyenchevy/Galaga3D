@@ -49,6 +49,10 @@ public class InputController : MonoBehaviour {
 		}else if (Input.GetKey (KeyCode.DownArrow)) { //Downward movement
 			GetComponent<Transform> ().Translate (Vector3.down * spacecraft.speed * Time.deltaTime);
 		}
+		
+		if (Input.GetKeyDown (KeyCode.T)) { //DEBUGGING UI
+			spacecraft.Hit ();
+		}
 	}
 	
 	protected void Rotate(){

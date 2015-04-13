@@ -194,7 +194,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 189716}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 10, y: 2, z: 10}
+  m_LocalPosition: {x: -6.45513916, y: 1.5189209, z: 10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 471496}
@@ -209,7 +209,7 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 107154}
-  m_LocalRotation: {x: -.331921309, y: .697665811, z: .618496478, w: .143362969}
+  m_LocalRotation: {x: -.331921279, y: .697665751, z: .618496418, w: .143362954}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1.00000012}
   m_Children: []
@@ -465,6 +465,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 100
   healthpoint: 100
+  currentHP: 0
+  healthSlider: {fileID: 0}
+  damageImage: {fileID: 0}
   shield: 100
 --- !u!114 &11412424
 MonoBehaviour:
@@ -478,7 +481,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 189716}
-  turret: {fileID: 0}
+  turret: {fileID: 186976}
   camera: {fileID: 2049048}
 --- !u!114 &11447528
 MonoBehaviour:
