@@ -44,7 +44,7 @@ public class GalagaSpaceship : MonoBehaviour {
 	}
 
 	public void Hit(int dmg){
-		Debug.Log (string.Format ("[BEFORE]Current HP: {0} Current Shield: {1}", currentHP, currentSheild));
+		Debug.Log (string.Format ("[BEFORE]Current HP: {0} Current Shield: {1}", currentHP, currentShield));
 
 		damaged = true;
 
@@ -56,7 +56,7 @@ public class GalagaSpaceship : MonoBehaviour {
 		shieldSlider.value = currentShield;
 		healthSlider.value = currentHP;
 
-		Debug.Log (string.Format ("[AFTER]Current HP: {0} Current Shield: {1}", currentHP, currentSheild));
+		Debug.Log (string.Format ("[AFTER]Current HP: {0} Current Shield: {1}", currentHP, currentShield));
 		if(currentHP <= 0 && !isDead){
 			//death function
 		}
