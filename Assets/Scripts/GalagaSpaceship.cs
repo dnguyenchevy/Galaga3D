@@ -21,7 +21,7 @@ public class GalagaSpaceship : MonoBehaviour {
 
 	void Awake(){
 		currentHP = healthpoint;
-		currentSheild = shield;
+		currentShield = shield;
 	}
 
 	// Use this for initialization
@@ -48,12 +48,12 @@ public class GalagaSpaceship : MonoBehaviour {
 
 		damaged = true;
 
-		if (currentSheild > 0) {
-			currentSheild -= dmg;
+		if (currentShield > 0) {
+			currentShield -= dmg;
 		} else {
 			currentHP -= dmg;
 		}
-		shieldSlider.value = currentSheild;
+		shieldSlider.value = currentShield;
 		healthSlider.value = currentHP;
 
 		Debug.Log (string.Format ("[AFTER]Current HP: {0} Current Shield: {1}", currentHP, currentSheild));
