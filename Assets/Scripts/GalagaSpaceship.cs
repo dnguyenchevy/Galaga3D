@@ -4,7 +4,7 @@ using UnityEngine.UI;
 
 public class GalagaSpaceship : MonoBehaviour {
 	private const float MaxThrottle = 40f;
-	private const float flashSpeed = 5f;
+	private const float flashSpeed = 1f;
 	private Color flashColour = new Color (1f, 0f, 0f, 0.1f);
 	
 	public float speed = 10f;
@@ -15,7 +15,7 @@ public class GalagaSpaceship : MonoBehaviour {
 	public Slider shieldSlider;
 
 	private int currentHP;
-	private int currentSheild;
+	private int currentShield;
 	private bool isDead = false;
 	private bool damaged = false;
 
@@ -57,7 +57,6 @@ public class GalagaSpaceship : MonoBehaviour {
 		healthSlider.value = currentHP;
 
 		Debug.Log (string.Format ("[AFTER]Current HP: {0} Current Shield: {1}", currentHP, currentSheild));
-
 		if(currentHP <= 0 && !isDead){
 			//death function
 		}
