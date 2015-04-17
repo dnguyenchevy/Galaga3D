@@ -7,7 +7,7 @@ public class InputController : MonoBehaviour {
 	private GalagaSpaceship spacecraft;
 	private const int Dmg = 10;
 
-	public GameManager;
+	public GameManager GM;
 
 	public GameObject player;
 	public GameObject turret;
