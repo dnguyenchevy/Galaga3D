@@ -6,7 +6,9 @@ public class InputController : MonoBehaviour {
 	private float targetAngle = 0f;
 	private GalagaSpaceship spacecraft;
 	private const int Dmg = 10;
-		
+
+	public GameManager;
+
 	public GameObject player;
 	public GameObject turret;
 	public Camera camera;
@@ -52,6 +54,16 @@ public class InputController : MonoBehaviour {
 		if (Input.GetKeyDown (KeyCode.T)) { //DEBUGGING UI
 			spacecraft.Hit (Dmg);
 		}
+
+		if (Input.GetKey (KeyCode.Escape)) { //Paused Menu
+		}
+	}
+
+	private void BarrelRoll(){
+		GetComponent<Transform> ();
+	}
+
+	private void Flip(){
 	}
 	
 	protected void Rotate(){

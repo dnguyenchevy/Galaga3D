@@ -59,6 +59,7 @@ public class GalagaSpaceship : MonoBehaviour {
 		Debug.Log (string.Format ("[AFTER]Current HP: {0} Current Shield: {1}", currentHP, currentShield));
 		if(currentHP <= 0 && !isDead){
 			//death function
+			Debug.Log ("Ded.exe");
 		}
 	}
 }
