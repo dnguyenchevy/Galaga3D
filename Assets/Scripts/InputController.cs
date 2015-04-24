@@ -11,6 +11,7 @@ public class InputController : MonoBehaviour {
 
 	public GameObject player;
 	public GameObject turret;
+	public GameObject centerPoint;
 	public Camera camera;
 
 	void Start(){
