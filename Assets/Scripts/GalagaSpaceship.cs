@@ -3,6 +3,8 @@ using System.Collections;
 using UnityEngine.UI;
 
 public class GalagaSpaceship : MonoBehaviour {
+	private const float RegenerateShieldDelay = 5f;
+	private const float RegenerateShieldRate = 1f;
 	private const float MaxThrottle = 40f;
 	private const float flashSpeed = 1f;
 	private Color flashColour = new Color (1f, 0f, 0f, 0.1f);
@@ -45,21 +47,39 @@ public class GalagaSpaceship : MonoBehaviour {
 
 	public void Hit(int dmg){
 		Debug.Log (string.Format ("[BEFORE]Current HP: {0} Current Shield: {1}", currentHP, currentShield));
-
+		this.StopAllCoroutines ();
 		damaged = true;
 
 		if (currentShield > 0) {
 			currentShield -= dmg;
+			StartCoroutine(ShieldDelay());
 		} else {
 			currentHP -= dmg;
 		}
-		shieldSlider.value = currentShield;
-		healthSlider.value = currentHP;
+
+		updateHUD();
 
 		Debug.Log (string.Format ("[AFTER]Current HP: {0} Current Shield: {1}", currentHP, currentShield));
 		if(currentHP <= 0 && !isDead){
 			//death function
-			Debug.Log ("Ded.exe");
 		}
 	}
+
+	private IEnumerator ShieldDelay(){
+		yield return new WaitForSeconds(RegenerateShieldDelay);
+		StartCoroutine(RegenerateShield());
+	}
+	private IEnumerator RegenerateShield(){
+		while (currentShield != shield) {
+			currentShield += 10;
+			updateHUD();
+			yield return new WaitForSeconds(RegenerateShieldRate);
+		}
+	}
+
+	private void updateHUD(){
+		shieldSlider.value = currentShield;
+		healthSlider.value = currentHP;
+	}
+
 }
