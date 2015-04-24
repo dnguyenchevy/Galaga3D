@@ -52,11 +52,12 @@ public class GalagaSpaceship : MonoBehaviour {
 
 		if (currentShield > 0) {
 			currentShield -= dmg;
-			StartCoroutine(ShieldDelay());
 		} else {
 			currentHP -= dmg;
 		}
-
+		if (currentShield != shield) {
+			StartCoroutine(ShieldDelay());
+		}
 		updateHUD();
 
 		Debug.Log (string.Format ("[AFTER]Current HP: {0} Current Shield: {1}", currentHP, currentShield));
