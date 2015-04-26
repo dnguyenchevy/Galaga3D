@@ -3,7 +3,16 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - LeftSpawner
+  - RightSpawner
+  - PauseMenu
+  - Enemy
+  - PM
+  - BackPoint
+  - RightLane
+  - LeftLane
+  - BackLane
   layers:
   - Default
   - TransparentFX
