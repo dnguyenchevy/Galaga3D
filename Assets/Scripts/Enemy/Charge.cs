@@ -6,22 +6,24 @@ public class Charge : MonoBehaviour {
 
 	public Transform[] Path;
 	public Transform BackPoint;
-	private Queue<Transform> moveQueue;
+	public Queue<Transform> MoveQueue;
 	public float Margin;
 	public float Speed;
+	public Transform goal;
 
-	private Transform goal;
 	private bool chargeFinished = false;
 
 
 	// Use this for initialization
 	void Start () {
-		moveQueue = new Queue<Transform>(Path);
-		goal = moveQueue.Dequeue();
+		BackPoint = GameObject.FindGameObjectWithTag("BackPoint").transform;
 	}
 	
 	// Update is called once per frame
 	void Update () {
+		if(goal == null)
+			return;
+
 		if(chargeFinished)
 		{
 			gameObject.GetComponent<Dogfight>().enabled = true;
@@ -39,15 +41,16 @@ public class Charge : MonoBehaviour {
 				return;
 			}
 
-			if(moveQueue.Count > 0)
-				goal = moveQueue.Dequeue();
+			if(MoveQueue.Count > 0)
+				goal = MoveQueue.Dequeue();
 			else
 				goal = BackPoint;
 
 			distanceToGoal = Vector3.Distance(transform.position, goal.position);
 		}
 
-		float time = distanceToGoal/Speed;
+		float distanceCovered = Speed * Time.deltaTime;
+		float time = distanceCovered/distanceToGoal;
 		gameObject.transform.position = Vector3.Lerp(gameObject.transform.position, goal.position, time);
 	}
 }

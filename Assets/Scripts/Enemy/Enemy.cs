@@ -1,16 +1,14 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 using System;
 
 public class Enemy : MonoBehaviour {
 
 	public EnemyClass Class;
-	public Transform[] Path1;
-	public Transform[] Path2;
-	public Transform[] Path3;
-	public Transform[] Path4;
 
 	private Dogfight dogFight;
+	public PathManager PM;
 
 	// Use this for initialization
 	void Start () {
@@ -28,6 +26,8 @@ public class Enemy : MonoBehaviour {
 		{
 			//Play death animation
 
+			GameObject.Destroy(gameObject);
+
 			if(dogFight.enabled == true)
 			{
 				dogFight.MyLane.RemoveEnemy(dogFight.LaneIndex);
@@ -38,17 +38,36 @@ public class Enemy : MonoBehaviour {
 	public void AssignPath(int min, int max)
 	{
 		Charge charge = gameObject.GetComponent<Charge>();
+		PM = GameObject.FindGameObjectWithTag("PM").GetComponent<PathManager>();
+		if(PM == null)
+			Debug.Log ("PM is null");
 
 		System.Random rng = new System.Random();
 		int path = rng.Next(min, max);
-		if(path == 0)
-			charge.Path = Path1;
-		else if(path == 1)
-			charge.Path = Path2;
-		else if(path == 2)
-			charge.Path = Path3;
-		else
-			charge.Path = Path4;
+		if(Class == EnemyClass.COMMANDER)
+		{
+			if(path == 0)
+				charge.Path = PM.CommPath1;
+			else if(path == 1)
+				charge.Path = PM.CommPath2;
+			else if(path == 2)
+				charge.Path = PM.CommPath1Rev;
+			else
+				charge.Path = PM.CommPath2Rev;
+		}
+		else if(Class == EnemyClass.SOLDIER)
+		{
+			if(path == 0)
+				charge.Path = PM.SoldPath1;
+			else if(path == 1)
+				charge.Path = PM.SoldPath2;
+			else if(path == 2)
+				charge.Path = PM.SoldPath1Rev;
+			else
+				charge.Path = PM.SoldPath2Rev;
+		}
+		charge.MoveQueue = new Queue<Transform>(charge.Path);
+		charge.goal = charge.MoveQueue.Dequeue();
 	}
 }
 public enum EnemyClass

@@ -3,9 +3,11 @@ using System.Collections;
 
 public class EnemySpawner : MonoBehaviour {
 
-	public GameObject[][] Enemies;
-	public float[][] Timings;
+	public GameObject[] Enemies;
+	public float[] Timings;
+	public int[] waveDisplacements;
 	private int waveIndex = 0;
+	private int enemyIndex = 0;
 	private bool waveSpawning = true;
 
 	private int pathMin;
@@ -36,15 +38,19 @@ public class EnemySpawner : MonoBehaviour {
 	{
 		if(waveSpawning)
 		{
-			for(int i = 0; i < Enemies[waveIndex].Length; i++)
+			Debug.Log ("Spawning wave: "+waveIndex+" "+waveDisplacements.Length);
+			while(enemyIndex < waveDisplacements[waveIndex])
 			{
-				yield return new WaitForSeconds(Timings[waveIndex][i]);
-				GameObject obj = GameObject.Instantiate(Enemies[waveIndex][i]);
+				Debug.Log("About to wait");
+				yield return new WaitForSeconds(Timings[enemyIndex]);
+				Debug.Log("Finished waiting");
+				GameObject obj = (GameObject) GameObject.Instantiate(Enemies[enemyIndex], gameObject.transform.position, new Quaternion(0.5f, 0.5f, 0.5f, -0.5f));
 				obj.GetComponent<Enemy>().AssignPath(pathMin, pathMax);
+				enemyIndex++;
 			}
 			waveSpawning = false;
 		}
-		else if( GameObject.FindGameObjectsWithTag("Enemy").Length == 0 && waveIndex < Enemies.Length -1)
+		else if( GameObject.FindGameObjectsWithTag("Enemy").Length == 0 && waveIndex < waveDisplacements.Length -1)
 		{
 			//Next wave incoming!!
 			waveIndex++;
