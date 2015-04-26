@@ -2,6 +2,7 @@ using UnityEngine;
 using System.Collections;
 
 public class InputController : MonoBehaviour {
+	private const float MARGIN = 1f;
 	private const float MAX_FOWARD = 15f;
 	private const float MAX_BACKWARD = -10f;
 	private const float MAX_X_DIST_TRAVEL = 3f;
