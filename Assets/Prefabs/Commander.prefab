@@ -251,7 +251,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   DogFightPosition: {x: 0, y: 0, z: 0}
   Margin: 1
-  Speed: 15
+  Speed: 50
   MyLane: {fileID: 0}
   LaneIndex: 0
 --- !u!114 &11490652
@@ -268,7 +268,7 @@ MonoBehaviour:
   Path: []
   BackPoint: {fileID: 0}
   Margin: .5
-  Speed: 100
+  Speed: 50
   goal: {fileID: 0}
 --- !u!198 &19807380
 ParticleSystem:
