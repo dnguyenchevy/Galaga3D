@@ -2,17 +2,21 @@ using UnityEngine;
 using System.Collections;
 
 public class InputController : MonoBehaviour {
+	private const float MARGIN = 1f;
+	private const float MAX_FOWARD = 15f;
+	private const float MAX_BACKWARD = -10f;
+	private const float MAX_X_DIST_TRAVEL = 3f;
+	private const float MAX_Y_DIST_TRAVEL = 2f;
 	private const float ROTATION_AMOUNT = 10f;
+
 	private float targetAngle = 0f;
 	private GalagaSpaceship spacecraft;
 	private const int Dmg = 10;
 
-	public GameManager GM;
-
 	public GameObject player;
 	public GameObject turret;
-	public GameObject centerPoint;
-	public Camera camera;
+	public GameObject rotationAxis;
+	public new Camera camera;
 
 	void Start(){
 		spacecraft = GetComponent<GalagaSpaceship> ();
@@ -36,20 +40,20 @@ public class InputController : MonoBehaviour {
 
 		//Spaceship movement WASD
 		if (Input.GetKey (KeyCode.W)) { //Forward movement
-			GetComponent<Transform> ().Translate (Vector3.forward * spacecraft.speed * Time.deltaTime);
+				GetComponent<Transform> ().Translate (Vector3.forward * spacecraft.speed * Time.deltaTime);
 		}else if (Input.GetKey (KeyCode.A)) { //Left movement
-			GetComponent<Transform> ().Translate (Vector3.left * spacecraft.speed * Time.deltaTime);
+				GetComponent<Transform> ().Translate (Vector3.left * spacecraft.speed * Time.deltaTime);
 		}else if (Input.GetKey (KeyCode.S)) { //Backward movement
-			GetComponent<Transform> ().Translate (Vector3.back * spacecraft.speed * Time.deltaTime);
+				GetComponent<Transform> ().Translate (Vector3.back * spacecraft.speed * Time.deltaTime);
 		}else if (Input.GetKey (KeyCode.D)) { //Right movement
-			GetComponent<Transform> ().Translate (Vector3.right * spacecraft.speed * Time.deltaTime);
+				GetComponent<Transform> ().Translate (Vector3.right * spacecraft.speed * Time.deltaTime);
 		}
 
 		//Spaceship movement vertical Up/Down Arrow
 		if (Input.GetKey (KeyCode.UpArrow)) { //Upward movement
 			GetComponent<Transform> ().Translate (Vector3.up * spacecraft.speed * Time.deltaTime);
 		}else if (Input.GetKey (KeyCode.DownArrow)) { //Downward movement
-			GetComponent<Transform> ().Translate (Vector3.down * spacecraft.speed * Time.deltaTime);
+			GetComponent<Transform> ().Translate (Vector3.down * spacecraft.speed * Time.deltaTime);			
 		}
 		
 		if (Input.GetKeyDown (KeyCode.T)) { //DEBUGGING UI
@@ -60,20 +64,13 @@ public class InputController : MonoBehaviour {
 		}
 	}
 
-	private void BarrelRoll(){
-		GetComponent<Transform> ();
-	}
-
-	private void Flip(){
-	}
-	
 	protected void Rotate(){
 		if (targetAngle > 0){ //Rotate counter-clockwise around player
-			camera.GetComponent<Transform>().RotateAround(player.GetComponent<Transform>().position, Vector3.up, -ROTATION_AMOUNT);
+			camera.GetComponent<Transform>().RotateAround(rotationAxis.GetComponent<Transform>().position, Vector3.up, -ROTATION_AMOUNT);
 			turret.GetComponent<Transform>().RotateAround(turret.GetComponent<Transform>().position, Vector3.up, -ROTATION_AMOUNT);
 			targetAngle -= ROTATION_AMOUNT;
 		}else if(targetAngle < 0){ //Rotate clockwise around player
-			camera.GetComponent<Transform>().RotateAround(player.GetComponent<Transform>().position, Vector3.up, ROTATION_AMOUNT);
+			camera.GetComponent<Transform>().RotateAround(rotationAxis.GetComponent<Transform>().position, Vector3.up, ROTATION_AMOUNT);
 			turret.GetComponent<Transform>().RotateAround(turret.GetComponent<Transform>().position, Vector3.up, ROTATION_AMOUNT);
 			targetAngle += ROTATION_AMOUNT;
 		}

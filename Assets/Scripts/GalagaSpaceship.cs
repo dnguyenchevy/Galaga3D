@@ -1,25 +1,19 @@
 ﻿using UnityEngine;
 using System.Collections;
-using UnityEngine.UI;
 
 public class GalagaSpaceship : MonoBehaviour {
 	private const float RegenerateShieldDelay = 5f;
 	private const float RegenerateShieldRate = 1f;
 	private const float MaxThrottle = 40f;
-	private const float flashSpeed = 1f;
-	private Color flashColour = new Color (1f, 0f, 0f, 0.1f);
 	
 	public float speed = 10f;
 	public int healthpoint = 100;
 	public int shield = 50;
-	public Image damageImage;
-	public Slider healthSlider;
-	public Slider shieldSlider;
 
-	private int currentHP;
-	private int currentShield;
-	private bool isDead = false;
-	private bool damaged = false;
+	public int currentHP;
+	public int currentShield;
+	public bool isDead = false;
+	public bool damaged = false;
 
 	void Awake(){
 		currentHP = healthpoint;
@@ -33,12 +27,6 @@ public class GalagaSpaceship : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		if (damaged) {
-			damageImage.color = flashColour;
-		} else {
-			damageImage.color = Color.Lerp(damageImage.color, Color.clear, flashSpeed * Time.deltaTime);
-		}
-		damaged = false;
 	}
 
 	public void Fire(){
@@ -58,7 +46,6 @@ public class GalagaSpaceship : MonoBehaviour {
 		if (currentShield != shield) {
 			StartCoroutine(ShieldDelay());
 		}
-		updateHUD();
 
 		Debug.Log (string.Format ("[AFTER]Current HP: {0} Current Shield: {1}", currentHP, currentShield));
 		if(currentHP <= 0 && !isDead){
@@ -73,14 +60,7 @@ public class GalagaSpaceship : MonoBehaviour {
 	private IEnumerator RegenerateShield(){
 		while (currentShield != shield) {
 			currentShield += 10;
-			updateHUD();
-			yield return new WaitForSeconds(RegenerateShieldRate);
+			yield return new WaitForSeconds (RegenerateShieldRate);
 		}
 	}
-
-	private void updateHUD(){
-		shieldSlider.value = currentShield;
-		healthSlider.value = currentHP;
-	}
-
 }

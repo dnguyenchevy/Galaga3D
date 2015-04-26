@@ -42,7 +42,8 @@ public class Dogfight : MonoBehaviour {
 			if(distanceToGoal > Margin)
 			{
 				gameObject.transform.LookAt(route);
-				float time = distanceToGoal/Speed;
+				float distanceCovered = Speed * Time.deltaTime;
+				float time = distanceCovered/distanceToGoal;
 				gameObject.transform.position = Vector3.Lerp(gameObject.transform.position, route, time);
 			}
 			else
@@ -55,11 +56,17 @@ public class Dogfight : MonoBehaviour {
 			if(distanceToGoal > Margin)
 			{
 				gameObject.transform.LookAt(DogFightPosition);
-				float time = distanceToGoal/Speed;
+				float distanceCovered = Speed * Time.deltaTime;
+				float time = distanceCovered/distanceToGoal;
 				gameObject.transform.position = Vector3.Lerp(gameObject.transform.position, DogFightPosition, time);
 			}
 			else
-				gameObject.transform.LookAt(Vector3.forward);
+			{
+				gameObject.transform.rotation = new Quaternion(-0.5f, 0.5f, 0.5f, 0.5f);
+				//gameObject.transform.Rotate(270f, 90f, 0f);
+				this.enabled = false;
+			}
+
 		}
 
 	
