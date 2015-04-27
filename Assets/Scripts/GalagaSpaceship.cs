@@ -5,6 +5,7 @@ public class GalagaSpaceship : MonoBehaviour {
 	private const float RegenerateShieldDelay = 5f;
 	private const float RegenerateShieldRate = 1f;
 	private const float MaxThrottle = 40f;
+	private const int DMG = 10;
 
 	public float speed = 10f;
 	public int healthpoint = 100;
@@ -14,8 +15,6 @@ public class GalagaSpaceship : MonoBehaviour {
 	public int currentShield;
 	public bool isDead = false;
 	public bool damaged = false;
-
-	public GameObject spaceshipModel;
 
 	void Awake(){
 		currentHP = healthpoint;
@@ -35,21 +34,19 @@ public class GalagaSpaceship : MonoBehaviour {
 		Debug.Log ("Shots fire!");
 	}
 
-	public void Hit(int dmg){
-		Debug.Log (string.Format ("[BEFORE]Current HP: {0} Current Shield: {1}", currentHP, currentShield));
+	public void Hit(){
 		this.StopAllCoroutines ();
 		damaged = true;
 
 		if (currentShield > 0) {
-			currentShield -= dmg;
+			currentShield -= DMG;
 		} else {
-			currentHP -= dmg;
+			currentHP -= DMG;
 		}
 		if (currentShield != shield) {
 			StartCoroutine(ShieldDelay());
 		}
 
-		Debug.Log (string.Format ("[AFTER]Current HP: {0} Current Shield: {1}", currentHP, currentShield));
 		if(currentHP <= 0 && !isDead){
 			//death function
 		}

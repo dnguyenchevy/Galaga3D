@@ -9,7 +9,9 @@ public class IndicatorCollider : MonoBehaviour {
 	public RawImage img;
 
 	void OnTriggerEnter(Collider coll){
-		StartCoroutine (flashIndicator());
+		if (coll.gameObject.name != "SpaceshipShell") {
+			StartCoroutine (flashIndicator ());
+		}
 	}
 
 	private IEnumerator flashIndicator(){

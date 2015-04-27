@@ -11,7 +11,6 @@ public class InputController : MonoBehaviour {
 
 	private float targetAngle = 0f;
 	private GalagaSpaceship spacecraft;
-	private const int Dmg = 10;
 
 	public GameObject player;
 	public GameObject turret;
@@ -58,7 +57,7 @@ public class InputController : MonoBehaviour {
 		}
 		
 		if (Input.GetKeyDown (KeyCode.T)) { //DEBUGGING UI
-			spacecraft.Hit (Dmg);
+			spacecraft.Hit ();
 		}
 
 		if (Input.GetKey (KeyCode.Escape)) { //Paused Menu
