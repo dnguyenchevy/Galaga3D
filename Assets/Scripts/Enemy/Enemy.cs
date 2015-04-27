@@ -22,7 +22,7 @@ public class Enemy : MonoBehaviour {
 
 	void OnCollisionEnter(Collision other)
 	{
-		if(other.gameObject.CompareTag("PlayerBullet"))
+		if(other.gameObject.CompareTag("PlayerBullet") || other.gameObject.CompareTag("Player"))
 		{
 			//Play death animation
 
@@ -39,11 +39,10 @@ public class Enemy : MonoBehaviour {
 	{
 		Charge charge = gameObject.GetComponent<Charge>();
 		PM = GameObject.FindGameObjectWithTag("PM").GetComponent<PathManager>();
-		if(PM == null)
-			Debug.Log ("PM is null");
 
 		System.Random rng = new System.Random();
 		int path = rng.Next(min, max);
+		Debug.Log("Picking path: "+path);
 		if(Class == EnemyClass.COMMANDER)
 		{
 			if(path == 0)

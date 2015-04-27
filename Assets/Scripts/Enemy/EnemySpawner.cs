@@ -38,13 +38,10 @@ public class EnemySpawner : MonoBehaviour {
 	{
 		if(waveSpawning)
 		{
-			Debug.Log ("Spawning wave: "+waveIndex+" "+waveDisplacements.Length);
 			while(enemyIndex < waveDisplacements[waveIndex])
 			{
-				Debug.Log("About to wait");
 				yield return new WaitForSeconds(Timings[enemyIndex]);
-				Debug.Log("Finished waiting");
-				GameObject obj = (GameObject) GameObject.Instantiate(Enemies[enemyIndex], gameObject.transform.position, new Quaternion(0.5f, 0.5f, 0.5f, -0.5f));
+				GameObject obj = (GameObject) GameObject.Instantiate(Enemies[enemyIndex], gameObject.transform.position, Quaternion.identity);
 				obj.GetComponent<Enemy>().AssignPath(pathMin, pathMax);
 				enemyIndex++;
 			}

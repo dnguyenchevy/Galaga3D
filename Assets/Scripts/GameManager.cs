@@ -21,7 +21,7 @@ public class GameManager : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		playership = player.GetComponent<GalagaSpaceship> ();
+		playership = GameObject.FindGameObjectWithTag("Player").GetComponent<GalagaSpaceship> ();
 	}
 	
 	// Update is called once per frame
