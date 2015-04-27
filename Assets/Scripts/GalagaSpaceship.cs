@@ -5,7 +5,7 @@ public class GalagaSpaceship : MonoBehaviour {
 	private const float RegenerateShieldDelay = 5f;
 	private const float RegenerateShieldRate = 1f;
 	private const float MaxThrottle = 40f;
-	
+
 	public float speed = 10f;
 	public int healthpoint = 100;
 	public int shield = 50;
@@ -15,6 +15,8 @@ public class GalagaSpaceship : MonoBehaviour {
 	public bool isDead = false;
 	public bool damaged = false;
 
+	public GameObject spaceshipModel;
+
 	void Awake(){
 		currentHP = healthpoint;
 		currentShield = shield;
@@ -22,7 +24,7 @@ public class GalagaSpaceship : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		
+
 	}
 	
 	// Update is called once per frame
@@ -63,4 +65,12 @@ public class GalagaSpaceship : MonoBehaviour {
 			yield return new WaitForSeconds (RegenerateShieldRate);
 		}
 	}
+
+	void OnCollisionEnter(Collision collision){
+		Debug.Log ("HIT SHIP!");
+		foreach(ContactPoint cp in collision.contacts){
+			Debug.Log (cp.point);
+		}
+	}
+	
 }

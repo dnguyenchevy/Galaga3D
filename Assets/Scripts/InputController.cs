@@ -16,6 +16,7 @@ public class InputController : MonoBehaviour {
 	public GameObject player;
 	public GameObject turret;
 	public GameObject rotationAxis;
+	public GameObject indicator;
 	public new Camera camera;
 
 	void Start(){
@@ -67,10 +68,12 @@ public class InputController : MonoBehaviour {
 	protected void Rotate(){
 		if (targetAngle > 0){ //Rotate counter-clockwise around player
 			camera.GetComponent<Transform>().RotateAround(rotationAxis.GetComponent<Transform>().position, Vector3.up, -ROTATION_AMOUNT);
+			indicator.GetComponent<Transform>().RotateAround(player.GetComponent<Transform>().position, Vector3.up, -ROTATION_AMOUNT);
 			turret.GetComponent<Transform>().RotateAround(turret.GetComponent<Transform>().position, Vector3.up, -ROTATION_AMOUNT);
 			targetAngle -= ROTATION_AMOUNT;
 		}else if(targetAngle < 0){ //Rotate clockwise around player
 			camera.GetComponent<Transform>().RotateAround(rotationAxis.GetComponent<Transform>().position, Vector3.up, ROTATION_AMOUNT);
+			indicator.GetComponent<Transform>().RotateAround(player.GetComponent<Transform>().position, Vector3.up, ROTATION_AMOUNT);
 			turret.GetComponent<Transform>().RotateAround(turret.GetComponent<Transform>().position, Vector3.up, ROTATION_AMOUNT);
 			targetAngle += ROTATION_AMOUNT;
 		}
