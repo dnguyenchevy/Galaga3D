@@ -9,6 +9,7 @@ public class EnemySpawner : MonoBehaviour {
 	private int waveIndex = 0;
 	private int enemyIndex = 0;
 	private bool waveSpawning = true;
+	private GameManager GM;
 
 	private int pathMin;
 	private int pathMax;
@@ -25,7 +26,7 @@ public class EnemySpawner : MonoBehaviour {
 			pathMin = 2;
 			pathMax = 4;
 		}
-
+		GM = GameObject.FindGameObjectWithTag("GameManager").GetComponent<GameManager>();
 		StartCoroutine(SpawningRoutine());
 	}
 	
@@ -54,6 +55,13 @@ public class EnemySpawner : MonoBehaviour {
 			waveSpawning = true;
 		}
 		else
+		{
+			if(gameObject.CompareTag("LeftSpawner"))
+				GM.LeftSpawnerDone = true;
+			else
+				GM.RightSpawnerDone = true;
+				
 			this.enabled = false;
+		}
 	}
 }
