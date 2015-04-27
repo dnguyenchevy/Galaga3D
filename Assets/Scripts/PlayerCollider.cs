@@ -3,8 +3,8 @@ using System.Collections;
 
 public class PlayerCollider : MonoBehaviour {
 
+	//Player has been hit by an object
 	void OnTriggerEnter(Collider collision){
-		Debug.Log ("You've hit something Jimmy!");
 		gameObject.GetComponentInParent<GalagaSpaceship> ().Hit ();
 	}
 }

@@ -61,13 +61,5 @@ public class GalagaSpaceship : MonoBehaviour {
 			currentShield += 10;
 			yield return new WaitForSeconds (RegenerateShieldRate);
 		}
-	}
-
-	void OnCollisionEnter(Collision collision){
-		Debug.Log ("HIT SHIP!");
-		foreach(ContactPoint cp in collision.contacts){
-			Debug.Log (cp.point);
-		}
-	}
-	
+	}	
 }

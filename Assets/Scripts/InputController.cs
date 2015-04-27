@@ -2,11 +2,6 @@ using UnityEngine;
 using System.Collections;
 
 public class InputController : MonoBehaviour {
-	private const float MARGIN = 1f;
-	private const float MAX_FOWARD = 15f;
-	private const float MAX_BACKWARD = -10f;
-	private const float MAX_X_DIST_TRAVEL = 3f;
-	private const float MAX_Y_DIST_TRAVEL = 2f;
 	private const float ROTATION_AMOUNT = 10f;
 
 	private float targetAngle = 0f;
@@ -23,47 +18,47 @@ public class InputController : MonoBehaviour {
 	}
 	
 	void Update(){
-		// Trigger functions if Rotate is requested
-		if (Input.GetKeyDown(KeyCode.LeftArrow)) { //Move camera & turret clockwise
-			targetAngle -= 90.0f;
-		} else if (Input.GetKeyDown(KeyCode.RightArrow)) { //Move camera & turret counter-clockwise
-			targetAngle += 90.0f;
-		}
+		if (!GameObject.FindGameObjectWithTag ("GameManager").GetComponent<GameManager> ().isPaused) {
+			// Trigger functions if Rotate is requested
+			if (Input.GetKeyDown (KeyCode.LeftArrow)) { //Move camera & turret clockwise
+				targetAngle -= 90.0f;
+			} else if (Input.GetKeyDown (KeyCode.RightArrow)) { //Move camera & turret counter-clockwise
+				targetAngle += 90.0f;
+			}
 
-		if (Input.GetKeyDown (KeyCode.Space)) { //Turret shooting function
-			spacecraft.Fire();
-		}
+			if (Input.GetKeyDown (KeyCode.Space)) { //Turret shooting function
+				spacecraft.Fire ();
+			}
 
-		if (targetAngle != 0) {
-			Rotate();
-		}
+			if (targetAngle != 0) {
+				Rotate ();
+			}
 
-		//Spaceship movement WASD
-		if (Input.GetKey (KeyCode.W)) { //Forward movement
+			//Spaceship movement WASD
+			if (Input.GetKey (KeyCode.W)) { //Forward movement
 				GetComponent<Transform> ().Translate (Vector3.forward * spacecraft.speed * Time.deltaTime);
-		}else if (Input.GetKey (KeyCode.A)) { //Left movement
+			} else if (Input.GetKey (KeyCode.A)) { //Left movement
 				GetComponent<Transform> ().Translate (Vector3.left * spacecraft.speed * Time.deltaTime);
-		}else if (Input.GetKey (KeyCode.S)) { //Backward movement
+			} else if (Input.GetKey (KeyCode.S)) { //Backward movement
 				GetComponent<Transform> ().Translate (Vector3.back * spacecraft.speed * Time.deltaTime);
-		}else if (Input.GetKey (KeyCode.D)) { //Right movement
+			} else if (Input.GetKey (KeyCode.D)) { //Right movement
 				GetComponent<Transform> ().Translate (Vector3.right * spacecraft.speed * Time.deltaTime);
-		}
+			}
 
-		//Spaceship movement vertical Up/Down Arrow
-		if (Input.GetKey (KeyCode.UpArrow)) { //Upward movement
-			GetComponent<Transform> ().Translate (Vector3.up * spacecraft.speed * Time.deltaTime);
-		}else if (Input.GetKey (KeyCode.DownArrow)) { //Downward movement
-			GetComponent<Transform> ().Translate (Vector3.down * spacecraft.speed * Time.deltaTime);			
-		}
+			//Spaceship movement vertical Up/Down Arrow
+			if (Input.GetKey (KeyCode.UpArrow)) { //Upward movement
+				GetComponent<Transform> ().Translate (Vector3.up * spacecraft.speed * Time.deltaTime);
+			} else if (Input.GetKey (KeyCode.DownArrow)) { //Downward movement
+				GetComponent<Transform> ().Translate (Vector3.down * spacecraft.speed * Time.deltaTime);			
+			}
 		
-		if (Input.GetKeyDown (KeyCode.T)) { //DEBUGGING UI
-			spacecraft.Hit ();
-		}
-
-		if (Input.GetKey (KeyCode.Escape)) { //Paused Menu
+			if (Input.GetKeyDown (KeyCode.T)) { //DEBUGGING UI
+				spacecraft.Hit ();
+			}
 		}
 	}
 
+	//Rotate objects
 	protected void Rotate(){
 		if (targetAngle > 0){ //Rotate counter-clockwise around player
 			camera.GetComponent<Transform>().RotateAround(rotationAxis.GetComponent<Transform>().position, Vector3.up, -ROTATION_AMOUNT);
