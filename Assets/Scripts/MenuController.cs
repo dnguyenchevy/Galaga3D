@@ -3,12 +3,14 @@ using System.Collections;
 
 public class MenuController : MonoBehaviour {
 
+	//Skybox variables
 	public Material skybox1;
 	public Material skybox2;
 	public Material skybox3;
 	public Material skybox4;
 	public Material skybox5;
 
+	//UI variables
 	public GameObject controlPanel;
 	public GameObject backgroundPanel;
 
@@ -16,9 +18,15 @@ public class MenuController : MonoBehaviour {
 	private bool controlPanelDisplay = true;
 	private bool backgroundPanelDisplay = false;
 
+	//Persistent
+	GameData gameData;
+
 	void Start () {
+		gameData = GameObject.Find("GameData").GetComponent<GameData>();
+
 		//Set the default Skybox for the camera
 		this.GetComponent<Skybox>().material = skybox1;
+		gameData.selectedSkybox = skybox1;
 
 		backgroundPanel.SetActive(backgroundPanelDisplay);
 		this.StartCoroutine("changeRotation");
@@ -68,7 +76,10 @@ public class MenuController : MonoBehaviour {
 		}
 	}
 
-	//Write the Play game method
+	//This function starts the game
+	public void playGame(){
+		Application.LoadLevel(1);
+	}
 
 	//This function will display the options menu
 	public void displayOptionsCanvas(){
@@ -121,4 +132,43 @@ public class MenuController : MonoBehaviour {
 		}
 	}
 
+	//Toggle method for the first Skybox
+	public void skyboxOneToggle(bool flag){
+		if(flag){
+			this.GetComponent<Skybox>().material = skybox1;
+			gameData.selectedSkybox = skybox1;
+		}
+	}
+
+	//Toggle method for the second Skybox
+	public void skyboxTwoToggle(bool flag){
+		if(flag){
+			this.GetComponent<Skybox>().material = skybox2;
+			gameData.selectedSkybox = skybox2;
+		}
+	}
+
+	//Toggle method for the third Skybox
+	public void skyboxThreeToggle(bool flag){
+		if(flag){
+			this.GetComponent<Skybox>().material = skybox3;
+			gameData.selectedSkybox = skybox3;
+		}
+	}
+
+	//Toggle method for the fourth Skybox
+	public void skyboxFourToggle(bool flag){
+		if(flag){
+			this.GetComponent<Skybox>().material = skybox4;
+			gameData.selectedSkybox = skybox4;
+		}
+	}
+
+	//Toggle method for the fifth Skybox
+	public void skyboxFiveToggle(bool flag){
+		if(flag){
+			this.GetComponent<Skybox>().material = skybox5;
+			gameData.selectedSkybox = skybox5;
+		}
+	}
 }
