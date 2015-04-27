@@ -52,8 +52,6 @@ public class Charge : MonoBehaviour {
 			distanceToGoal = Vector3.Distance(transform.position, goal.position);
 		}
 
-		Debug.Log ("Moving toward target - distance to target: "+distanceToGoal);
-
 		float distanceCovered = Speed * Time.deltaTime;
 		float time = distanceCovered/distanceToGoal;
 		gameObject.transform.position = Vector3.Lerp(gameObject.transform.position, goal.position, time);

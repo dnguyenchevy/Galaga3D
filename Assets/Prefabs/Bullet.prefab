@@ -9,9 +9,11 @@ GameObject:
   m_Component:
   - 4: {fileID: 449278}
   - 114: {fileID: 11466606}
+  - 65: {fileID: 6541384}
+  - 54: {fileID: 5476920}
   m_Layer: 0
   m_Name: Bullet
-  m_TagString: Untagged
+  m_TagString: PlayerBullet
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -52,8 +54,8 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 150384}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 53.0499992, y: 27.7408161, z: 32.6030273}
-  m_LocalScale: {x: .100000001, y: .100000009, z: .100000009}
+  m_LocalPosition: {x: -3.77017021, y: -5.56906223, z: 57.3440895}
+  m_LocalScale: {x: .200000003, y: .200000003, z: .200000003}
   m_Children:
   - {fileID: 423122}
   m_Father: {fileID: 0}
@@ -89,6 +91,33 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 156356}
   m_Mesh: {fileID: 4300000, guid: c6e06d0d3358a40319bbe241f073ab4f, type: 3}
+--- !u!54 &5476920
+Rigidbody:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 150384}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0
+  m_UseGravity: 0
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 112
+  m_CollisionDetection: 0
+--- !u!65 &6541384
+BoxCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 150384}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1, z: 7.36951447}
+  m_Center: {x: 0, y: 0, z: .0845718384}
 --- !u!114 &11466606
 MonoBehaviour:
   m_ObjectHideFlags: 1

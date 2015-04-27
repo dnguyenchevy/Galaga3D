@@ -110,10 +110,10 @@ GameObject:
   - 114: {fileID: 11426486}
   - 114: {fileID: 11470520}
   - 114: {fileID: 11457472}
-  - 64: {fileID: 6425994}
+  - 65: {fileID: 6591640}
   m_Layer: 0
   m_Name: Commander
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -180,7 +180,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 168552}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 20.5199547, y: 25.8005028, z: 125.076729}
+  m_LocalPosition: {x: -1.71122932, y: -6.15967274, z: 80.7388763}
   m_LocalScale: {x: .5, y: .5, z: .5}
   m_Children:
   - {fileID: 457176}
@@ -269,8 +269,8 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 175158}
   m_Mesh: {fileID: 4300000, guid: 57217e6e0033e4e26baee3b964523211, type: 3}
---- !u!64 &6425994
-MeshCollider:
+--- !u!65 &6591640
+BoxCollider:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
@@ -279,8 +279,8 @@ MeshCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Convex: 0
-  m_Mesh: {fileID: 0}
+  m_Size: {x: 7.93537903, y: 1.77296185, z: 11.2824745}
+  m_Center: {x: -.0284900665, y: .0602035522, z: -1.19668579}
 --- !u!114 &11426486
 MonoBehaviour:
   m_ObjectHideFlags: 1

@@ -10,7 +10,7 @@ public class IndicatorCollider : MonoBehaviour {
 
 	//GameObject that is not the player within the Trigger, Flash directional indicator
 	void OnTriggerEnter(Collider coll){
-		if (coll.gameObject.name != "SpaceshipShell") {
+		if (coll.gameObject.name != "SpaceshipShell" && !coll.gameObject.CompareTag("PlayerBullet") ){
 			StopAllCoroutines();
 			StartCoroutine (flashIndicator ());
 		}

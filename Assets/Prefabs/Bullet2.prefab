@@ -11,7 +11,7 @@ GameObject:
   - 33: {fileID: 3306534}
   - 23: {fileID: 2318220}
   - 114: {fileID: 11438886}
-  - 64: {fileID: 6457306}
+  - 65: {fileID: 6574456}
   m_Layer: 0
   m_Name: Bullet2
   m_TagString: EnemyBullet
@@ -26,7 +26,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 198494}
   m_LocalRotation: {x: -4.32977997e-17, y: .707106709, z: .707106829, w: -4.32978063e-17}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 2.60325336, y: -2.5755322, z: 60.5484428}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -62,8 +62,8 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 198494}
   m_Mesh: {fileID: 4300000, guid: 09ffc626a67d44d36b1adda7a243704b, type: 3}
---- !u!64 &6457306
-MeshCollider:
+--- !u!65 &6574456
+BoxCollider:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
@@ -72,8 +72,8 @@ MeshCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Convex: 1
-  m_Mesh: {fileID: 4300000, guid: 09ffc626a67d44d36b1adda7a243704b, type: 3}
+  m_Size: {x: .914645195, y: .264930725, z: .169066682}
+  m_Center: {x: -.131310463, y: -.0426254235, z: .0130267059}
 --- !u!114 &11438886
 MonoBehaviour:
   m_ObjectHideFlags: 1

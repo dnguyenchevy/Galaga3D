@@ -20,8 +20,9 @@ public class Enemy : MonoBehaviour {
 	
 	}
 
-	void OnCollisionEnter(Collision other)
+	void OnTriggerEnter(Collider other)
 	{
+		Debug.Log ("I've been hit");
 		if(other.gameObject.CompareTag("PlayerBullet") || other.gameObject.CompareTag("Player"))
 		{
 			//Play death animation
