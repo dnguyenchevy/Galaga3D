@@ -22,7 +22,6 @@ public class Enemy : MonoBehaviour {
 
 	void OnTriggerEnter(Collider other)
 	{
-		Debug.Log ("I've been hit");
 		if(other.gameObject.CompareTag("PlayerBullet") || other.gameObject.CompareTag("Player"))
 		{
 			//Play death animation
@@ -42,7 +41,6 @@ public class Enemy : MonoBehaviour {
 
 		System.Random rng = new System.Random();
 		int path = rng.Next(min, max);
-		Debug.Log("Picking path: "+path);
 		if(Class == EnemyClass.COMMANDER)
 		{
 			if(path == 0)

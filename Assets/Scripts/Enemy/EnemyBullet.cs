@@ -1,6 +1,8 @@
 ﻿using UnityEngine;
 using System.Collections;
 
+
+//Controls where the enemy bullet projectory
 public class EnemyBullet : MonoBehaviour {
 
 	public float Speed;
