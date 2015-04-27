@@ -7,11 +7,15 @@ public class InputController : MonoBehaviour {
 	private float targetAngle = 0f;
 	private GalagaSpaceship spacecraft;
 
+
 	public GameObject player;
 	public GameObject turret;
 	public GameObject CenterPoint;
 	public GameObject indicator;
 	public new Camera camera;
+	public Transform GM;
+	public float CloseBoundary;
+	public float FarBoundary;
 
 	void Start(){
 		spacecraft = GetComponent<GalagaSpaceship> ();
@@ -35,13 +39,13 @@ public class InputController : MonoBehaviour {
 			}
 
 			//Spaceship movement WASD
-			if (Input.GetKey (KeyCode.W)) { //Forward movement
+			if (Input.GetKey (KeyCode.W) && gameObject.transform.position.z < GM.transform.position.z+CloseBoundary) { //Forward movement
 				GetComponent<Transform> ().Translate (Vector3.forward * spacecraft.speed * Time.deltaTime);
-			} else if (Input.GetKey (KeyCode.A)) { //Left movement
+			} else if (Input.GetKey (KeyCode.A) && gameObject.transform.position.x > GM.transform.position.x-CloseBoundary) { //Left movement
 				GetComponent<Transform> ().Translate (Vector3.left * spacecraft.speed * Time.deltaTime);
-			} else if (Input.GetKey (KeyCode.S)) { //Backward movement
+			} else if (Input.GetKey (KeyCode.S) && gameObject.transform.position.z > GM.transform.position.z-CloseBoundary) { //Backward movement
 				GetComponent<Transform> ().Translate (Vector3.back * spacecraft.speed * Time.deltaTime);
-			} else if (Input.GetKey (KeyCode.D)) { //Right movement
+			} else if (Input.GetKey (KeyCode.D) && gameObject.transform.position.x < GM.transform.position.x+CloseBoundary) { //Right movement
 				GetComponent<Transform> ().Translate (Vector3.right * spacecraft.speed * Time.deltaTime);
 			}
 

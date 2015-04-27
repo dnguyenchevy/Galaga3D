@@ -17,6 +17,9 @@ TagManager:
   - BackgroundPanel
   - MainMenuCanvas
   - OptionsCanvas
+  - EnemyBullet
+  - GameManager
+  - CenterPoint
   layers:
   - Default
   - TransparentFX
