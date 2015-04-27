@@ -56,6 +56,7 @@ public class GalagaSpaceship : MonoBehaviour {
 
 		if(currentHP <= 0 && !isDead){
 			//death function
+			GameObject.FindGameObjectWithTag("GameManager").GetComponent<GameManager>().Lose ();
 		}
 	}
 

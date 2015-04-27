@@ -2196,7 +2196,7 @@ Prefab:
     - target: {fileID: 11412424, guid: 5beadbd9d4a9947b7a03961cf696f868, type: 2}
       propertyPath: CenterPoint
       value: 
-      objectReference: {fileID: 1753974566}
+      objectReference: {fileID: 1876735735}
     - target: {fileID: 11407546, guid: 5beadbd9d4a9947b7a03961cf696f868, type: 2}
       propertyPath: speed
       value: 50
@@ -3403,6 +3403,7 @@ GameObject:
   - 4: {fileID: 1876735736}
   - 114: {fileID: 1876735738}
   - 114: {fileID: 1876735737}
+  - 82: {fileID: 1876735739}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: GameManager
@@ -3454,6 +3455,75 @@ MonoBehaviour:
   shieldSlider: {fileID: 1034652683}
   LeftSpawnerDone: 0
   RightSpawnerDone: 0
+--- !u!82 &1876735739
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1876735735}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 8300000, guid: 647f5d0df5dc05d4fbdf8be3a2a2e2c8, type: 3}
+  m_PlayOnAwake: 1
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 1
+  Mute: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    - time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
 --- !u!1 &1995597851
 GameObject:
   m_ObjectHideFlags: 0

@@ -58,8 +58,15 @@ public class InputController : MonoBehaviour {
 				GetComponent<Transform> ().Translate (Vector3.down * spacecraft.speed * Time.deltaTime);
 			}
 		
-			if (Input.GetKeyDown (KeyCode.T)) { //DEBUGGING UI
+
+			//FOR PRESENTATION PURPOSES -- Remove before submitting the game
+			if (Input.GetKeyDown (KeyCode.T)) { 
 				spacecraft.Hit ();
+			}
+			if(Input.GetKeyDown (KeyCode.U)){
+				GameObject.FindGameObjectWithTag ("GameManager").GetComponent<GameManager> ().Victory();
+			}else if(Input.GetKeyDown (KeyCode.I)){
+				GameObject.FindGameObjectWithTag ("GameManager").GetComponent<GameManager> ().Lose();
 			}
 		}
 	}

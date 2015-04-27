@@ -26,7 +26,6 @@ public class Enemy : MonoBehaviour {
 		if(other.gameObject.CompareTag("PlayerBullet") || other.gameObject.CompareTag("Player"))
 		{
 			//Play death animation
-
 			GameObject.Destroy(gameObject);
 
 			if(dogFight.enabled == true)

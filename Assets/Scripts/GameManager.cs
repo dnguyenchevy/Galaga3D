@@ -6,6 +6,7 @@ public class GameManager : MonoBehaviour {
 	private GalagaSpaceship playership;
 	private const float flashSpeed = 1f;
 	private Color flashColour = new Color (1f, 0f, 0f, 0.1f);
+	private GameData GD;
 
 	public int currentLevel = 1;	//Current level the game is being played on
 	public bool isPaused = false;
@@ -19,8 +20,14 @@ public class GameManager : MonoBehaviour {
 	public bool LeftSpawnerDone;
 	public bool RightSpawnerDone;
 
+	void Awake(){
+		GD = GameObject.Find ("GameData").GetComponent<GameData> ();
+	}
+
 	// Use this for initialization
 	void Start () {
+		GameObject.FindGameObjectWithTag ("MainCamera").GetComponent<Skybox> ().material = GD.selectedSkybox;
+
 		playership = GameObject.FindGameObjectWithTag("Player").GetComponent<GalagaSpaceship> ();
 		LeftSpawnerDone = false;
 		RightSpawnerDone = false;
@@ -50,7 +57,7 @@ public class GameManager : MonoBehaviour {
 
 		if(LeftSpawnerDone && RightSpawnerDone && GameObject.FindGameObjectsWithTag("Enemy").Length <= 0)
 		{
-			//Victory
+			Victory ();
 		}
 	}
 
@@ -74,5 +81,15 @@ public class GameManager : MonoBehaviour {
 		PauseScreen.SetActive(false);
 		PauseScreen.GetComponent<CanvasGroup>().alpha = 0f;
 		Time.timeScale = 1f;
+	}
+
+	public void Victory(){
+		GD.status = true;
+		Application.LoadLevel (2);
+	}
+
+	public void Lose(){
+		GD.status = false;
+		Application.LoadLevel (2);
 	}
 }
