@@ -8,12 +8,14 @@ public class IndicatorCollider : MonoBehaviour {
 
 	public RawImage img;
 
+	//GameObject that is not the player within the Trigger, Flash directional indicator
 	void OnTriggerEnter(Collider coll){
 		if (coll.gameObject.name != "SpaceshipShell") {
 			StartCoroutine (flashIndicator ());
 		}
 	}
 
+	//Animate RawImage to flash a particular amount of time
 	private IEnumerator flashIndicator(){
 		for (int count = 0; count < NUM_FLASHES; count++) {
 			img.enabled = true;

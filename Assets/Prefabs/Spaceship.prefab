@@ -117,7 +117,7 @@ GameObject:
   - 64: {fileID: 6458824}
   - 114: {fileID: 11442582}
   m_Layer: 0
-  m_Name: PlayerShip
+  m_Name: SpaceshipShell
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

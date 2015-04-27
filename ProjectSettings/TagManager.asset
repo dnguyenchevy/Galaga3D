@@ -14,6 +14,7 @@ TagManager:
   - LeftLane
   - BackLane
   - EnemyBullet
+  - GameManager
   layers:
   - Default
   - TransparentFX
