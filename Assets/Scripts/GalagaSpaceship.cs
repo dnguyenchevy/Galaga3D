@@ -25,15 +25,6 @@ public class GalagaSpaceship : MonoBehaviour {
 		currentShield = shield;
 	}
 
-	// Use this for initialization
-	void Start () {
-
-	}
-	
-	// Update is called once per frame
-	void Update () {
-	}
-
 	public void Fire(){
 		GameObject bullet = (GameObject) GameObject.Instantiate(Bullet, FirePoint.GetComponent<Transform>().position, Quaternion.identity );
 		bullet.GetComponent<EnemyBullet>().Target = target.position;
