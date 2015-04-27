@@ -12,10 +12,6 @@ public class GameManager : MonoBehaviour {
 
 	public GameObject player;
 	public Image damageImage;
-	public Image leftIndicator;
-	public Image rightIndicator;
-	public Image backIndicator;
-	public Image frontIndicator;
 	public Slider healthSlider;
 	public Slider shieldSlider;
 
