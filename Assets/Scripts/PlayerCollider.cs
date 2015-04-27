@@ -5,6 +5,7 @@ public class PlayerCollider : MonoBehaviour {
 
 	//Player has been hit by an object
 	void OnTriggerEnter(Collider collision){
-		gameObject.GetComponentInParent<GalagaSpaceship> ().Hit ();
+		if(!collision.gameObject.CompareTag("PlayerBullet"))
+			gameObject.GetComponentInParent<GalagaSpaceship> ().Hit ();
 	}
 }
