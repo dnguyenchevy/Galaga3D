@@ -48,7 +48,7 @@ public class GameManager : MonoBehaviour {
 
 		updateHUD();
 
-		if(LeftSpawnerDone && RightSpawnerDone && GameObject.FindGameObjectsWithTag("Enemy") <= 0)
+		if(LeftSpawnerDone && RightSpawnerDone && GameObject.FindGameObjectsWithTag("Enemy").Length <= 0)
 		{
 			//Victory
 		}
