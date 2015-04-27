@@ -9,7 +9,7 @@ public class InputController : MonoBehaviour {
 
 	public GameObject player;
 	public GameObject turret;
-	public GameObject rotationAxis;
+	public GameObject CenterPoint;
 	public GameObject indicator;
 	public new Camera camera;
 
@@ -47,9 +47,11 @@ public class InputController : MonoBehaviour {
 
 			//Spaceship movement vertical Up/Down Arrow
 			if (Input.GetKey (KeyCode.UpArrow)) { //Upward movement
+				CenterPoint.GetComponent<Transform> ().Translate (Vector3.up * spacecraft.speed * Time.deltaTime);
 				GetComponent<Transform> ().Translate (Vector3.up * spacecraft.speed * Time.deltaTime);
 			} else if (Input.GetKey (KeyCode.DownArrow)) { //Downward movement
-				GetComponent<Transform> ().Translate (Vector3.down * spacecraft.speed * Time.deltaTime);			
+				CenterPoint.GetComponent<Transform> ().Translate (Vector3.down * spacecraft.speed * Time.deltaTime);			
+				GetComponent<Transform> ().Translate (Vector3.down * spacecraft.speed * Time.deltaTime);
 			}
 		
 			if (Input.GetKeyDown (KeyCode.T)) { //DEBUGGING UI
@@ -61,14 +63,20 @@ public class InputController : MonoBehaviour {
 	//Rotate objects
 	protected void Rotate(){
 		if (targetAngle > 0){ //Rotate counter-clockwise around player
-			camera.GetComponent<Transform>().RotateAround(rotationAxis.GetComponent<Transform>().position, Vector3.up, -ROTATION_AMOUNT);
+			camera.GetComponent<Transform>().RotateAround(CenterPoint.GetComponent<Transform>().position, Vector3.up, -ROTATION_AMOUNT);
+
 			indicator.GetComponent<Transform>().RotateAround(player.GetComponent<Transform>().position, Vector3.up, -ROTATION_AMOUNT);
+
 			turret.GetComponent<Transform>().RotateAround(turret.GetComponent<Transform>().position, Vector3.up, -ROTATION_AMOUNT);
+
 			targetAngle -= ROTATION_AMOUNT;
 		}else if(targetAngle < 0){ //Rotate clockwise around player
-			camera.GetComponent<Transform>().RotateAround(rotationAxis.GetComponent<Transform>().position, Vector3.up, ROTATION_AMOUNT);
+			camera.GetComponent<Transform>().RotateAround(CenterPoint.GetComponent<Transform>().position, Vector3.up, ROTATION_AMOUNT);
+
 			indicator.GetComponent<Transform>().RotateAround(player.GetComponent<Transform>().position, Vector3.up, ROTATION_AMOUNT);
+
 			turret.GetComponent<Transform>().RotateAround(turret.GetComponent<Transform>().position, Vector3.up, ROTATION_AMOUNT);
+
 			targetAngle += ROTATION_AMOUNT;
 		}
 	}
