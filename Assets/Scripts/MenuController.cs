@@ -3,13 +3,24 @@ using System.Collections;
 
 public class MenuController : MonoBehaviour {
 
-	public Material defaultSkybox;
+	public Material skybox1;
+	public Material skybox2;
+	public Material skybox3;
+	public Material skybox4;
+	public Material skybox5;
+
+	public GameObject controlPanel;
+	public GameObject backgroundPanel;
+
 	private int currentDirection = 0;
-	
+	private bool controlPanelDisplay = true;
+	private bool backgroundPanelDisplay = false;
+
 	void Start () {
 		//Set the default Skybox for the camera
-		this.GetComponent<Skybox>().material = defaultSkybox;
+		this.GetComponent<Skybox>().material = skybox1;
 
+		backgroundPanel.SetActive(backgroundPanelDisplay);
 		this.StartCoroutine("changeRotation");
 	}
 
@@ -54,6 +65,59 @@ public class MenuController : MonoBehaviour {
 
 			//Wait 8 seconds before changing direction again
 			yield return new WaitForSeconds(8f);
+		}
+	}
+
+	//Write the Play game method
+
+	//This function will display the options menu
+	public void displayOptionsCanvas(){
+		Canvas mainMenuCanvas = GameObject.FindGameObjectWithTag("MainMenuCanvas").GetComponent<Canvas>();
+		Canvas optionsCanvas = GameObject.FindGameObjectWithTag("OptionsCanvas").GetComponent<Canvas>();
+
+		if(!optionsCanvas.enabled){
+			mainMenuCanvas.enabled = false;
+			optionsCanvas.enabled = true;
+		}
+	}
+
+	//This function will close the game
+	public void quitGame(){
+		Application.Quit();
+	}
+
+	//This function will display the control panel
+	public void displayControlPanel(){
+
+		if(!controlPanelDisplay){
+			backgroundPanelDisplay = false;
+			backgroundPanel.SetActive(backgroundPanelDisplay);
+
+			controlPanelDisplay = !controlPanelDisplay;
+			controlPanel.SetActive(true);
+		}
+	}
+
+	//This function will display the background panel
+	public void displayBackgroundPanel(){
+
+		if(!backgroundPanelDisplay){
+			controlPanelDisplay = false;
+			controlPanel.SetActive(controlPanelDisplay);
+
+			backgroundPanelDisplay = !backgroundPanelDisplay;
+			backgroundPanel.SetActive(backgroundPanelDisplay);
+		}
+	}
+	
+	//This function will display the main menu
+	public void displayMainMenuCanvas(){
+		Canvas optionsCanvas = GameObject.FindGameObjectWithTag("OptionsCanvas").GetComponent<Canvas>();
+		Canvas mainMenuCanvas = GameObject.FindGameObjectWithTag("MainMenuCanvas").GetComponent<Canvas>();
+
+		if(!mainMenuCanvas.enabled){
+			optionsCanvas.enabled = false;
+			mainMenuCanvas.enabled = true;
 		}
 	}
 
