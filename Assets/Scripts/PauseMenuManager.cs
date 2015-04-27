@@ -1,17 +1,17 @@
 ﻿using UnityEngine;
 using System.Collections;
+//Pause Functionality
 
 public class PauseMenuManager : MonoBehaviour {
 	private const int MENU_SCENE = 0;
 	private GameManager GM; 
 
 	void Awake(){
-		Time.timeScale = 1;
-		GM = GameObject.Find ("GameManager").GetComponent<GameManager> ();
+		GM = GetComponent<GameManager> ();
 	}
 
 	public void ResumeGame(){
-		GM.isPaused = false;
+		GM.isPaused = !GM.isPaused;
 	}
 	
 	public void RestartLevel(){

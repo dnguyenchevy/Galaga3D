@@ -17,6 +17,9 @@ public class Charge : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		BackPoint = GameObject.FindGameObjectWithTag("BackPoint").transform;
+		Vector3 lookAt = transform.position;
+		lookAt.z -= 100;
+		transform.LookAt(lookAt);
 	}
 	
 	// Update is called once per frame
@@ -48,6 +51,8 @@ public class Charge : MonoBehaviour {
 
 			distanceToGoal = Vector3.Distance(transform.position, goal.position);
 		}
+
+		Debug.Log ("Moving toward target - distance to target: "+distanceToGoal);
 
 		float distanceCovered = Speed * Time.deltaTime;
 		float time = distanceCovered/distanceToGoal;

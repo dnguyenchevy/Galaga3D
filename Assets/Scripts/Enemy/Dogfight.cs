@@ -62,9 +62,9 @@ public class Dogfight : MonoBehaviour {
 			}
 			else
 			{
-				gameObject.transform.rotation = new Quaternion(-0.5f, 0.5f, 0.5f, 0.5f);
-				//gameObject.transform.Rotate(270f, 90f, 0f);
-				this.enabled = false;
+				Vector3 lookAt = transform.position;
+				lookAt.z += 100;
+				transform.LookAt(lookAt);
 			}
 
 		}
@@ -84,7 +84,7 @@ public class Dogfight : MonoBehaviour {
 		}
 
 		System.Random rng = new System.Random();
-		int assignment = rng.Next(0, possibilities.Count);
+		int assignment = possibilities[rng.Next(0, possibilities.Count)];
 
 		if(assignment == 0)
 			MyLane = rightLane;

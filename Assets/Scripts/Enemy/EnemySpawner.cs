@@ -9,6 +9,7 @@ public class EnemySpawner : MonoBehaviour {
 	private int waveIndex = 0;
 	private int enemyIndex = 0;
 	private bool waveSpawning = true;
+	private GameManager GM;
 
 	private int pathMin;
 	private int pathMax;
@@ -25,7 +26,7 @@ public class EnemySpawner : MonoBehaviour {
 			pathMin = 2;
 			pathMax = 4;
 		}
-
+		GM = GameObject.FindGameObjectWithTag("GameManager").GetComponent<GameManager>();
 		StartCoroutine(SpawningRoutine());
 	}
 	
@@ -38,13 +39,10 @@ public class EnemySpawner : MonoBehaviour {
 	{
 		if(waveSpawning)
 		{
-			Debug.Log ("Spawning wave: "+waveIndex+" "+waveDisplacements.Length);
 			while(enemyIndex < waveDisplacements[waveIndex])
 			{
-				Debug.Log("About to wait");
 				yield return new WaitForSeconds(Timings[enemyIndex]);
-				Debug.Log("Finished waiting");
-				GameObject obj = (GameObject) GameObject.Instantiate(Enemies[enemyIndex], gameObject.transform.position, new Quaternion(0.5f, 0.5f, 0.5f, -0.5f));
+				GameObject obj = (GameObject) GameObject.Instantiate(Enemies[enemyIndex], gameObject.transform.position, Quaternion.identity);
 				obj.GetComponent<Enemy>().AssignPath(pathMin, pathMax);
 				enemyIndex++;
 			}
@@ -57,6 +55,13 @@ public class EnemySpawner : MonoBehaviour {
 			waveSpawning = true;
 		}
 		else
+		{
+			if(gameObject.CompareTag("LeftSpawner"))
+				GM.LeftSpawnerDone = true;
+			else
+				GM.RightSpawnerDone = true;
+				
 			this.enabled = false;
+		}
 	}
 }

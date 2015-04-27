@@ -32,16 +32,29 @@ public class Lane : MonoBehaviour {
 	{
 		enemy.GetComponent<Dogfight>().DogFightPosition = nextAnchor;
 		enemy.GetComponent<Dogfight>().LaneIndex = Enemies.Count;
-		nextAnchor.z += AnchorDistance;
+
+		if(!gameObject.CompareTag("BackLane"))
+			nextAnchor.z += AnchorDistance;
+		else
+			nextAnchor.x -= AnchorDistance;
+
+
 		Enemies.Add(enemy);
 	}
 
 	public void RemoveEnemy(int index)
 	{
-		nextAnchor.z -= AnchorDistance;
+		if(!gameObject.CompareTag("BackLane"))
+			nextAnchor.z -= AnchorDistance;
+		else
+			nextAnchor.x += AnchorDistance;
+
 		for(int i = index+1; i < Enemies.Count; i++)
 		{
-			Enemies[i].GetComponent<Dogfight>().DogFightPosition.z -= AnchorDistance;
+			if(!gameObject.CompareTag("BackLane"))
+				Enemies[i].GetComponent<Dogfight>().DogFightPosition.z -= AnchorDistance;
+			else
+				Enemies[i].GetComponent<Dogfight>().DogFightPosition.x += AnchorDistance;
 		}
 		Enemies.RemoveAt(index);
 	}
