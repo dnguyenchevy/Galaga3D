@@ -15,9 +15,14 @@ public class GameManager : MonoBehaviour {
 	public Slider healthSlider;
 	public Slider shieldSlider;
 
+	public bool LeftSpawnerDone;
+	public bool RightSpawnerDone;
+
 	// Use this for initialization
 	void Start () {
 		playership = GameObject.FindGameObjectWithTag("Player").GetComponent<GalagaSpaceship> ();
+		LeftSpawnerDone = false;
+		RightSpawnerDone = false;
 	}
 	
 	// Update is called once per frame
@@ -30,6 +35,11 @@ public class GameManager : MonoBehaviour {
 		playership.damaged = false;
 
 		updateHUD();
+
+		if(LeftSpawnerDone && RightSpawnerDone && GameObject.FindGameObjectsWithTag("Enemy") <= 0)
+		{
+			//Victory
+		}
 
 
 	}
