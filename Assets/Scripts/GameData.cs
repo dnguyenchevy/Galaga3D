@@ -28,4 +28,7 @@ public class GameData : MonoBehaviour {
 
 	//The selected Skybox from the Menu scene
 	public Material selectedSkybox{get; set;}
+
+	//Used to determine win or lose
+	public bool status{get; set;}
 }
