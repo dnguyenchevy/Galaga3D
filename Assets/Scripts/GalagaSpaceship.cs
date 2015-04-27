@@ -16,6 +16,10 @@ public class GalagaSpaceship : MonoBehaviour {
 	public bool isDead = false;
 	public bool damaged = false;
 
+	public GameObject Bullet;
+	public GameObject FirePoint;
+	public Transform target;
+
 	void Awake(){
 		currentHP = healthpoint;
 		currentShield = shield;
@@ -31,7 +35,10 @@ public class GalagaSpaceship : MonoBehaviour {
 	}
 
 	public void Fire(){
-		Debug.Log ("Shots fire!");
+		GameObject bullet = (GameObject) GameObject.Instantiate(Bullet, FirePoint.GetComponent<Transform>().position, Quaternion.identity );
+		bullet.GetComponent<EnemyBullet>().Target = target.position;
+
+		bullet.transform.LookAt (target);
 	}
 
 	public void Hit(){
