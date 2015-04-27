@@ -2070,6 +2070,8 @@ MonoBehaviour:
   damageImage: {fileID: 1551340552}
   healthSlider: {fileID: 353748839}
   shieldSlider: {fileID: 1900506758}
+  LeftSpawnerDone: 0
+  RightSpawnerDone: 0
 --- !u!114 &1564107871
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -7,7 +7,7 @@ public class GalagaSpaceship : MonoBehaviour {
 	private const float MaxThrottle = 40f;
 	private const int DMG = 10;
 
-	public float speed = 10f;
+	public float speed = 50f;
 	public int healthpoint = 100;
 	public int shield = 50;
 
